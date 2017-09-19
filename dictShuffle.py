@@ -8,10 +8,8 @@ numWords = int(sys.argv[1])
 dictWords = file.readlines()
 
 randWords = []
-i = 0
-while(i < numWords):
+while(len(randWords) < numWords):
     randWords.append(dictWords[random.randint(0, len(dictWords))])
-    i += 1
 
 newStr = ""
 for word in randWords:
