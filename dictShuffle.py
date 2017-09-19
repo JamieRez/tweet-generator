@@ -8,7 +8,7 @@ dictLines = file.readlines()
 randWords = []
 i = 0
 while(i < numWords):
-    randWords.append(dictLines[random.randint(0, b=len(dictLines))])
+    randWords.append(dictLines[random.randint(0, len(dictLines))])
     i += 1
 
 newStr = ""

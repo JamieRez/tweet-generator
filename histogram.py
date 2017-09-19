@@ -5,7 +5,7 @@ def histogram(bookFile):
     #open bookfile
     book = open(bookFile)
     #get book words
-    regex = re.compile('[,\.!?:/$-()@]')
+    regex = re.compile('[,\.!?:/$()@]')
     bookWords = regex.sub('', book.read().lower()).split()
 
     uniqueWords = []
