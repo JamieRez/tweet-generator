@@ -1,9 +1,10 @@
+"""Program that randomly picks words from a Dictionary."""
 import sys
 import random
 file = open("/usr/share/dict/web2", "r")
 numWords = int(sys.argv[1])
 
-#Every word is separated by a newline
+# Every word is separated by a newline
 dictWords = file.readlines()
 
 randWords = []

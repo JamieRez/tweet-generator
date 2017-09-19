@@ -1,10 +1,13 @@
+"""Histogram Program."""
 import re
 bookFilePath = "/Users/James/Downloads/bookOfText.txt"
 
+
 def histogram(bookFile):
-    #open bookfile
+    """Generate an array of each word and its frequency from a textfile."""
+    # open bookfile
     book = open(bookFile)
-    #get book words
+    # get book words
     regex = re.compile('[,\.!?:/$()@]')
     bookWords = regex.sub('', book.read().lower()).split()
 
@@ -23,6 +26,7 @@ def histogram(bookFile):
 
 
 def unique_words(histogram):
+    """Return the amount of words that only show up once in the histogram."""
     uniqueWords = []
     for histogramWord in histogram:
         if histogramWord[1] == 1:
@@ -31,6 +35,7 @@ def unique_words(histogram):
 
 
 def frequency(word, histogram):
+    """Return the amount of times a word shows up in the histogram."""
     for histogramWord in histogram:
         if histogramWord[0] == word:
             return histogramWord[1]
