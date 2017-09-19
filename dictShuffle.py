@@ -3,12 +3,13 @@ import random
 file = open("/usr/share/dict/web2", "r")
 numWords = int(sys.argv[1])
 
-dictLines = file.readlines()
+#Every word is separated by a newline
+dictWords = file.readlines()
 
 randWords = []
 i = 0
 while(i < numWords):
-    randWords.append(dictLines[random.randint(0, len(dictLines))])
+    randWords.append(dictWords[random.randint(0, len(dictWords))])
     i += 1
 
 newStr = ""
