@@ -1,26 +1,41 @@
+import re
+bookFilePath = "/Users/James/Downloads/bookOfText.txt"
+
 def histogram(bookFile):
     #open bookfile
     book = open(bookFile)
-    #get book line array
-    bookLines = book.readlines()
-    #get the word array
-    bookWords = []
-    for bookLine in bookLines:
-        for bookWord in bookLine.split():
-            bookWords.append(bookWord)
+    #get book words
+    regex = re.compile('[,\.!?:/$-()@]')
+    bookWords = regex.sub('', book.read().lower()).split()
 
-    class WordFreq:
-        def __init__(self, word, freq):
-            self.word = word
-            self.freq = freq
+    uniqueWords = []
+    histogramList = []
 
-    wordFreqArr = []
     for word in bookWords:
-        newWordFreq = WordFreq(word, bookWords.count(word))
-        if(wordFreqArr.count(newWordFreq) == 0):
-            wordFreqArr.append(newWordFreq)
+        if not word.isdigit() and word.isalpha():
+            if word not in uniqueWords:
+                uniqueWords.append(word)
+                histogramList.append([word, 1])
+            else:
+                histogramList[uniqueWords.index(word)][1] += 1
 
-    print(wordFreqArr[30].word)
+    return histogramList
 
 
-histogram("/Users/James/Downloads/bookOfText.txt")
+def unique_words(histogram):
+    uniqueWords = []
+    for histogramWord in histogram:
+        if histogramWord[1] == 1:
+            uniqueWords.append(histogramWord)
+    return(len(uniqueWords))
+
+
+def frequency(word, histogram):
+    for histogramWord in histogram:
+        if histogramWord[0] == word:
+            return histogramWord[1]
+
+
+print(histogram(bookFilePath))
+print(unique_words(histogram(bookFilePath)))
+print(frequency("cigar", histogram(bookFilePath)))
